@@ -15,10 +15,12 @@ class FileUploadRepo {
       );
       request.files.add(image);
       var response = await request.send();
-      showToast("Image successfully uploaded to the sever.");
-      if (response.statusCode == 201) {}
+      if (response.statusCode == 201) {
+        showToast("Image successfully uploaded to the sever.");
+      } else {
+        showToast("Something went wrong, try again.");
+      }
     } catch (e) {
-      showToast("Something went wrong, try again.");
       log("---$e");
     }
   }

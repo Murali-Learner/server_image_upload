@@ -28,17 +28,10 @@ class HomeProvider extends ChangeNotifier {
       mediaUrl = pickedImage!.path;
       uploadImage(mediaUrl);
       isLoading = false;
-      showToast("Image picked");
-      isLoading = false;
     } catch (e) {
       isLoading = false;
       showToast("Image not picked");
     }
-    // if (PermissionStatus.granted.isGranted) {
-
-    // } else {
-    //   showToast("Permission Not Granted");
-    // }
   }
 
   Future uploadImage(mediaUrl) async {
