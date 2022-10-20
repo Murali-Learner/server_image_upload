@@ -22,22 +22,23 @@ class HomeProvider extends ChangeNotifier {
   }
 
   Future<void> pickImage(ImageSource source) async {
-    if (PermissionStatus.granted.isGranted) {
-      try {
-        isLoading = true;
-        final pickedImage = await ImagePicker().pickImage(source: source);
-        mediaUrl = pickedImage!.path;
-        uploadImage(mediaUrl);
-        isLoading = false;
-        showToast("Image picked");
-        isLoading = false;
-      } catch (e) {
-        isLoading = false;
-        showToast("Image not picked");
-      }
-    } else {
-      showToast("Permission Not Granted");
+    try {
+      isLoading = true;
+      final pickedImage = await ImagePicker().pickImage(source: source);
+      mediaUrl = pickedImage!.path;
+      uploadImage(mediaUrl);
+      isLoading = false;
+      showToast("Image picked");
+      isLoading = false;
+    } catch (e) {
+      isLoading = false;
+      showToast("Image not picked");
     }
+    // if (PermissionStatus.granted.isGranted) {
+
+    // } else {
+    //   showToast("Permission Not Granted");
+    // }
   }
 
   Future uploadImage(mediaUrl) async {
